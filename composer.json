@@ -1,0 +1,14 @@
+{
+    "name": "eric-chau/debug-skill",
+    "require": {
+        "symfony/debug": "2.7.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.7.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jarvis\\Skill\\Debug\\": "src/"
+        }
+    }
+}
