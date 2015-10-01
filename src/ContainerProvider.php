@@ -17,7 +17,7 @@ class ContainerProvider implements ContainerProviderInterface
     /**
      * {@inheritdoc}
      */
-    public static function hydrate(Jarvis $jarvis)
+    public function hydrate(Jarvis $jarvis)
     {
         if ($jarvis->debug) {
             Debug::enable();
