@@ -23,7 +23,7 @@ class ContainerProvider implements ContainerProviderInterface
             Debug::enable();
 
             $jarvis->addReceiver(JarvisEvents::EXCEPTION_EVENT, function (ExceptionEvent $event) {
-                $event->setResponse((new ExceptionHandler())->createResponse($event->getException()));
+                $event->setResponse((new ExceptionHandler())->createResponse($event->exception()));
             });
         }
     }
