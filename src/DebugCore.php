@@ -12,7 +12,7 @@ use Symfony\Component\Debug\ExceptionHandler;
 /**
  * @author Eric Chau <eric.chau@gmail.com>
  */
-class ContainerProvider implements ContainerProviderInterface
+class DebugCore implements ContainerProviderInterface
 {
     /**
      * {@inheritdoc}
