@@ -1,7 +1,7 @@
 {
     "name": "eric-chau/debug-skill",
     "require": {
-        "symfony/debug": "~3.0.0"
+        "symfony/debug": "~3.1.0"
     },
     "autoload": {
         "psr-4": {

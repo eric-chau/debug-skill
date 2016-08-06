@@ -4,7 +4,7 @@ namespace Jarvis\Skill\Debug;
 
 use Jarvis\Jarvis;
 use Jarvis\Skill\DependencyInjection\ContainerProviderInterface;
-use Jarvis\Skill\EventBroadcaster\JarvisEvents;
+use Jarvis\Skill\EventBroadcaster\BroadcasterInterface;
 use Jarvis\Skill\EventBroadcaster\ExceptionEvent;
 use Symfony\Component\Debug\Debug;
 use Symfony\Component\Debug\ExceptionHandler;
@@ -23,7 +23,7 @@ class DebugCore implements ContainerProviderInterface
         if ($jarvis->debug) {
             Debug::enable();
 
-            $jarvis->addReceiver(JarvisEvents::EXCEPTION_EVENT, function (ExceptionEvent $event) {
+            $jarvis->on(BroadcasterInterface::EXCEPTION_EVENT, function(ExceptionEvent $event) {
                 $response = new Response(
                     (new ExceptionHandler())->getHtml($event->exception()),
                     Response::HTTP_INTERNAL_SERVER_ERROR
