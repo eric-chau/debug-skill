@@ -20,10 +20,10 @@ class DebugCore implements ContainerProviderInterface
      */
     public function hydrate(Jarvis $jarvis)
     {
-        if ($jarvis->debug) {
+        if ($jarvis['debug']) {
             Debug::enable();
 
-            $jarvis->on(BroadcasterInterface::EXCEPTION_EVENT, function(ExceptionEvent $event) {
+            $jarvis->on(BroadcasterInterface::EXCEPTION_EVENT, function (ExceptionEvent $event) {
                 $response = new Response(
                     (new ExceptionHandler())->getHtml($event->exception()),
                     Response::HTTP_INTERNAL_SERVER_ERROR
