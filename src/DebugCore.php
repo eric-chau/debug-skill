@@ -24,6 +24,10 @@ class DebugCore implements ContainerProviderInterface
             Debug::enable();
 
             $jarvis->on(BroadcasterInterface::EXCEPTION_EVENT, function (ExceptionEvent $event) {
+                if (!($event->exception() instanceof \Exception)) {
+                    return;
+                }
+
                 $response = new Response(
                     (new ExceptionHandler())->getHtml($event->exception()),
                     Response::HTTP_INTERNAL_SERVER_ERROR
