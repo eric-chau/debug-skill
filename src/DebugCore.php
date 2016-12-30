@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jarvis\Skill\Debug;
 
 use Jarvis\Jarvis;
@@ -18,12 +20,12 @@ class DebugCore implements ContainerProviderInterface
     /**
      * {@inheritdoc}
      */
-    public function hydrate(Jarvis $jarvis)
+    public function hydrate(Jarvis $app)
     {
-        if ($jarvis['debug']) {
+        if ($app['debug']) {
             Debug::enable();
 
-            $jarvis->on(BroadcasterInterface::EXCEPTION_EVENT, function (ExceptionEvent $event) {
+            $app->on(BroadcasterInterface::EXCEPTION_EVENT, function (ExceptionEvent $event) {
                 if (!($event->exception() instanceof \Exception)) {
                     return;
                 }
